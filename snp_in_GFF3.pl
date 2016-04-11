@@ -34,23 +34,23 @@ while (<FILE>) {
 		chomp;
 		my @split_list2 = split('\t', $_);
 		if ($scaffold eq $split_list2[0] && $split_list2[2] eq 'gene') {
-        	if ($snp >= $split_list2[3] && $snp <= $split_list2[4]) {
-        		print OUT "$scaffold\t$snp\t$split_list2[8]\t";
-        		$intron_checker{$snp} = 1;
-        		$new_line = 1;
+        		if ($snp >= $split_list2[3] && $snp <= $split_list2[4]) {
+        			print OUT "$scaffold\t$snp\t$split_list2[8]\t";
+        			$intron_checker{$snp} = 1;
+        			$new_line = 1;
+        		}
+        	} elsif ($new_line == 1 && $split_list2[2] eq 'gene') {
+        		print OUT "\n";
+        		$new_line = 0;
         	}
-        } elsif ($new_line == 1 && $split_list2[2] eq 'gene') {
-        	print OUT "\n";
-        	$new_line = 0;
-        }
 
 		if ($scaffold eq $split_list2[0] && $split_list2[2] eq 'exon' && (exists $intron_checker{$snp})) {
-        	if ($snp >= $split_list2[3] && $snp <= $split_list2[4]) {
-        		print OUT "EXON\n";
-        		$new_line = 0;
+        		if ($snp >= $split_list2[3] && $snp <= $split_list2[4]) {
+        			print OUT "EXON\n";
+        			$new_line = 0;
         		
+        		}
         	}
-        }
 	}
 	close GFF;
 }
