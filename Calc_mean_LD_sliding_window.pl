@@ -30,8 +30,10 @@ for (my $i=0; $i <= $len; $i += 500) {
 				$snp += 1;
 				$add += $split[-1];
 		} elsif ($split[4] > $region) {
-				$mean = $add / $snp;
-				print "$start .. $region bp" . "\t $mean \n";
+				if ($snp != 0) {
+					$mean = $add / $snp;
+					print "$start .. $region bp" . "\t $mean \n";
+				}
 				$region += $bp_increment;
 				$start += $bp_increment;
 				$snp = 0;
