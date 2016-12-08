@@ -9,5 +9,11 @@
 
 **annotation.gff3** must be in GFF3 format, without introns specifically listed
 
-Output: contains three columns; scaffold/contig name, snp position and gene identifier.
+Output: contains three columns; scaffold/contig name, snp position, and gene identifier.
 **A fourth column is created when SNP is in an exon or when the SNP falls in two separate genes (e.g. overlapping genes). When        fourth column is absent, SNP lays in an intron**
+
+
+## Calculate average LD scores for SNPs in 1000 bp regions and move with 500 bp sliding window from [Plink] (http://pngu.mgh.harvard.edu/~purcell/plink/) output. 
+
+### Usage 
+    perl Calc_mean_LD_sliding_window.pl <Plink output file> <scaffold length>
