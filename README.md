@@ -17,3 +17,23 @@ Output: contains three columns; scaffold/contig name, snp position, and gene ide
 
 ### Usage 
     perl Calc_mean_LD_sliding_window.pl <Plink output file> <scaffold length>
+    
+## Estimate how many nucleotide positions of a given mapping reference are covered by at least 5 reads (needs sorted BAM files as input) using [Bedtools genomecov](http://bedtools.readthedocs.io/en/latest/content/tools/genomecov.html)
+
+```bash
+for i in `ls example/location/bam-files/*.sorted.bam`; 
+do
+    echo "working on:" $i
+    bedtools genomecov -ibam $i -bga -g mapping_reference_length.file > $i.len.txt
+done
+
+for i in `ls example/location/bam-files/*.txt`; do perl calc_covered_bp_genomecov.pl $i > "$i".overview; done
+
+```
+
+## Filter SNPs that passed your filter settings
+
+```bash
+for i in `ls example/location/vcf-files/*.vcf`; do echo "$i";  perl filter_snp_from_vcf.pl $i > "$i".snpcount; done
+
+```
