@@ -1,7 +1,8 @@
 #! /usr/bin/perl
 
 # Written by Tom de Man
-# Using vcftools output from --TajimaD, mean TajimaD calculation from 5000 bp bins. Also calculates the STDDEV of all non '-nan' TajimaD values
+# Using vcftools output from --TajimaD. mean and stdev TajimaD calculation from 5000 bp bins 
+# all '-nan' TajimaD values are omitted
 
 use strict;
 use warnings;

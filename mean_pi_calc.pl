@@ -1,7 +1,8 @@
 #! /usr/bin/perl
 
 # Written by Tom de Man
-# Using vcftools output from --window-pi-step, mean Pi calculation from 5000 bp bins. Also calculates the STDEV of all non '-nan' Pi values 
+# Using vcftools output from --window-pi-step. Mean and stdev Pi calculation from 5000 bp bins 
+# all '-nan' TajimaD values are omitted
 
 use strict;
 use warnings;
