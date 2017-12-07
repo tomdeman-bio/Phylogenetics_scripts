@@ -2,7 +2,7 @@
 
 # Written by Tom de Man
 # Using vcftools output from --window-pi-step. Mean and stdev Pi calculation from 5000 bp bins 
-# all '-nan' TajimaD values are omitted
+# all '-nan' pi values are omitted
 
 use strict;
 use warnings;
