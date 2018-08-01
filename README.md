@@ -16,7 +16,7 @@ Output: contains three columns; scaffold/contig name, snp position, and gene ide
 ## Check if a genomic range falls within a protein coding gene using [bedmap](https://bedops.readthedocs.io/en/latest/content/reference/statistics/bedmap.html). A range with high FST, small pi or negative Tajima's D can be used as input. 
 
 ### Usage
-    bedmap --skip-unmapped --echo --echo-map-id --delim '\t' negative_tajimasD_range.bed Genes.bed > genes.txt
+    bedmap --skip-unmapped --echo --echo-map-id --delim '\t' negative_tajimasD_range.bed genes.bed > genes_in_range.txt
     
     sed y/\;/$"\n"/ genes.txt | sort | uniq > genes_uniq.txt
 
