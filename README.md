@@ -18,7 +18,7 @@ Output: contains three columns; scaffold/contig name, snp position, and gene ide
 ### Usage
     bedmap --skip-unmapped --echo --echo-map-id --delim '\t' negative_tajimasD_range.bed genes.bed > genes_in_range.txt
     
-    sed y/\;/$"\n"/ genes.txt | sort | uniq > genes_uniq.txt
+    sed y/\;/$"\n"/ genes_in_range.txt | sort | uniq > genes_uniq.txt
 
 ## Calculate average LD scores for SNPs in 1000 bp regions and move with a 500 bp sliding window using [Plink](http://pngu.mgh.harvard.edu/~purcell/plink/) output. 
 
