@@ -2,7 +2,7 @@
 
 ## Check if a SNP falls within a protein coding gene. SNPs with high FST values determined by [BayeScan](http://cmpg.unibe.ch/software/BayeScan/) can be used as input.
 
-### Usage 
+### Usage
     perl snp_in_GFF3.pl <snps.txt> <annotation.gff3>
 
 **snps.txt** contains two columns; scaffold/contig name and snp position
@@ -13,25 +13,25 @@ Output: contains three columns; scaffold/contig name, snp position, and gene ide
 **A fourth column is created when SNP is in an exon or when the SNP falls in two separate genes (e.g. overlapping genes). When        fourth column is absent, SNP lays in an intron**
 
 
-## Check if a genomic range falls within a protein coding gene using [bedmap](https://bedops.readthedocs.io/en/latest/content/reference/statistics/bedmap.html). A range with high FST, small pi or negative Tajima's D can be used as input. 
+## Check if a genomic range falls within a protein coding gene using [bedmap](https://bedops.readthedocs.io/en/latest/content/reference/statistics/bedmap.html). A range with high FST, small pi or negative Tajima's D can be used as input.
 
 ### Usage
     bedmap --skip-unmapped --echo --echo-map-id --delim '\t' negative_tajimasD_range.bed genes.bed > genes_in_range.txt
-    
+
     awk '{print $4}' genes_in_range.txt > genes_from_block.txt
-    
+
     sed y/\;/$"\n"/ genes_from_block.txt | sort | uniq > genes_from_block_uniq.txt
 
-## Calculate average LD scores for SNPs in 1000 bp regions and move with a 500 bp sliding window using [Plink](http://pngu.mgh.harvard.edu/~purcell/plink/) output. 
+## Calculate average LD scores for SNPs in 1000 bp regions and move with a 500 bp sliding window using [Plink](http://zzz.bwh.harvard.edu/plink/) output.
 
-### Usage 
+### Usage
     perl Calc_mean_LD_sliding_window.pl <Plink output file> <scaffold length>
-    
-    
+
+
 ## Estimate how many nucleotide positions of a given mapping reference are covered by at least 5 reads (needs sorted BAM files as input) using [Bedtools genomecov](http://bedtools.readthedocs.io/en/latest/content/tools/genomecov.html)
 
 ```bash
-for i in `ls example/location/bam-files/*.sorted.bam`; 
+for i in `ls example/location/bam-files/*.sorted.bam`;
 do
     echo "working on:" $i
     bedtools genomecov -ibam $i -bga -g mapping_reference_length.file > $i.len.txt
